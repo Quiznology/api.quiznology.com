@@ -1,0 +1,20 @@
+{
+  "esversion" : 6,
+  "mocha":true,
+  "expr": true,
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "freeze": true,
+  "indent": 2,
+  "laxcomma": true,
+  "node": true,
+  "trailing": true,
+  "unused": "vars",
+  "undef": true,
+  "quotmark" : "single",
+  "curly": false,
+  "globals"   : {
+
+  }
+}
