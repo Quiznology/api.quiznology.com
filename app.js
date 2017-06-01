@@ -34,6 +34,10 @@ const allowCrossDomain = (req, res, next) => {
 };
 app.use(allowCrossDomain);
 
+app.get('/', (req, res) => {
+	res.status(200).send('/');
+});
+
 app.listen(config.port, (err) => {
 	if (err) throw new Error(err.message);
 
