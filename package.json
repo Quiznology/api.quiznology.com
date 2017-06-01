@@ -16,13 +16,30 @@
     "code",
     "self-improvement"
   ],
-  "contributors" : [
-    {"name":"José Vicente Sogorb", "url": "https://github.com/joviwap"},
-    {"name":"Jesus Mendoza", "url": "https://github.com/Jesusz0r"},
-    {"name":"Laura Coalla", "url": "https://github.com/laurazenc"},
-    {"name":"Fran Quesada", "url": "https://github.com/totegsito"},
-    {"name":"Jorge Martin Marti", "url": "https://github.com/pepocivs"},
-    {"name":"Miguel Haba"}
+  "contributors": [
+    {
+      "name": "José Vicente Sogorb",
+      "url": "https://github.com/joviwap"
+    },
+    {
+      "name": "Jesus Mendoza",
+      "url": "https://github.com/Jesusz0r"
+    },
+    {
+      "name": "Laura Coalla",
+      "url": "https://github.com/laurazenc"
+    },
+    {
+      "name": "Fran Quesada",
+      "url": "https://github.com/totegsito"
+    },
+    {
+      "name": "Jorge Martin Marti",
+      "url": "https://github.com/pepocivs"
+    },
+    {
+      "name": "Miguel Haba"
+    }
   ],
   "license": "MIT",
   "bugs": {
@@ -30,6 +47,7 @@
   },
   "homepage": "https://github.com/Quiznology/api.quiznology.com#readme",
   "devDependencies": {
+    "chai": "^4.0.1",
     "gulp": "^3.9.1",
     "gulp-mocha": "^4.3.1"
   }
