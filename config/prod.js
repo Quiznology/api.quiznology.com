@@ -1,5 +1,5 @@
 module.exports = {
-	id: "prod",
+	id: "dev",
 	port: process.env.PORT || 3000,
 	morgan: {
 		use: true,
@@ -14,5 +14,10 @@ module.exports = {
 	redis: {
 		host: process.env.REDIS_HOST || 'localhost',
 		port: process.env.REDIS_PORT || 6379
+	},
+	github: {
+		clientID: process.env.GITHUB_CLIENT_ID,
+		clientSecret: process.env.GITHUB_SECRET_ID,
+		callbackURL: `http://localhost:3000/auth/github/callback`
 	}
 };
