@@ -22,15 +22,19 @@ app.use(session({
  		ttl: 260
 	}),
 	saveUninitialized: false,
- 	resave: false
+ 	resave: false,
+	 cookie: {
+		 httpOnly: true,
+		 maxAge: 7*60*24*3600*1000
+	 }
 }));
 
 passport.serializeUser(function(user, done) {
 	done(null, user);
 });
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser((function(obj, done) {
 	done(null, obj);
-});
+}));
 passport.use(new GithubStrategy({
 	clientID: config.github.clientID,
 	clientSecret: config.github.clientSecret,
@@ -58,7 +62,7 @@ const allowCrossDomain = (req, res, next) => {
 app.use(allowCrossDomain);
 
 app.get('/', (req, res) => {
-	res.status(200).send(req.session.user);
+	res.status(200).send(req.user);
 });
 
 app.get('/auth/github', passport.authenticate('github'), (req, res) => {
