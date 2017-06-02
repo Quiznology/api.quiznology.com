@@ -13,6 +13,18 @@ const GithubStrategy = require('passport-github2').Strategy;
 const config = require('./config');
 const appController = require('./controllers/app/appController');
 
+app.use(session({
+	secret: config.sessionSecret || 'Frase muy secreta',
+ 	store: new redisStore({
+	 	host: config.redis.host,
+ 		port: config.redis.port,
+ 		client: redisClient,
+ 		ttl: 260
+	}),
+	saveUninitialized: false,
+ 	resave: false
+}));
+
 passport.serializeUser(function(user, done) {
 	done(null, user);
 });
