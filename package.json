@@ -1,10 +1,45 @@
 {
   "name": "api.quiznology.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "API for the QUIZnology project",
+  "contributors": [
+    {
+      "name": "José Vicente Sogorb",
+      "url": "https://github.com/joviwap"
+    },
+    {
+      "name": "Jesus Mendoza",
+      "url": "https://github.com/Jesusz0r"
+    },
+    {
+      "name": "Laura Coalla",
+      "url": "https://github.com/laurazenc"
+    },
+    {
+      "name": "Fran Quesada",
+      "url": "https://github.com/totegsito"
+    },
+    {
+      "name": "Jorge Martin Marti",
+      "url": "https://github.com/pepocivs"
+    },
+    {
+      "name": "Miguel Haba"
+    }
+  ],
+  "keywords": [
+    "quiz",
+    "developers",
+    "code",
+    "self-improvement"
+  ],
+  "main": "bin/api.js",
   "directories": {
     "lib": "lib"
+  },
+  "scripts": {
+    "test": "gulp test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,9 +50,6 @@
     "type": "git",
     "url": "git+https://github.com/Quiznology/api.quiznology.com.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Quiznology/api.quiznology.com/issues"
   },
@@ -35,5 +67,10 @@
     "passport-github": "^1.1.0",
     "passport-github2": "^0.1.10",
     "redis": "^2.7.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^4.3.1"
   }
 }
