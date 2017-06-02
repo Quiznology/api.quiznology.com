@@ -58,16 +58,16 @@ const allowCrossDomain = (req, res, next) => {
 app.use(allowCrossDomain);
 
 app.get('/', (req, res) => {
-	res.status(200).send('/');
+	res.status(200).send(req.session.user);
 });
 
 app.get('/auth/github', passport.authenticate('github'), (req, res) => {
-	res.status(200).send(req.user);
+	res.status(200).json(req.user);
 });
 
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
 	console.log(req.user);
-	res.status(200).send(req.user);
+	res.status(200).json(req.user);
 });
 
 app.listen(config.port, (err) => {
