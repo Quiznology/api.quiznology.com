@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const redis = require('redis');
 const redisStore = require('connect-redis')(session);
@@ -26,17 +27,6 @@ passport.use(new GithubStrategy({
 	appController.logUser(profile, done);
 }));
 
-app.use(session({
-	secret: config.sessionSecret || 'Frase muy secreta',
-	store: new redisStore({
-		host: config.redis.host,
-		port: config.redis.port,
-		client: redisClient,
-		ttl: 260
-	}),
-	saveUninitialized: false,
-	resave: false
-}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
@@ -62,15 +52,20 @@ app.get('/', (req, res) => {
 app.get('/auth/github', passport.authenticate('github'), (req, res) => {
 	res.status(200).send(req.user);
 });
-/*, { scope: [ 'user:email', 'user:login', 'user:url', 'user:avatarUrl' ] })*/
 
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
 	console.log(req.user);
-	res.redirect('/');
+	res.status(200).send(req.user);
 });
 
 app.listen(config.port, (err) => {
 	if (err) throw new Error(err.message);
 
-	console.log(`Server is up and running on port ${config.port}`);
+	console.log(`Server is up and running on port: ${config.port}`);
+	mongoose.connect(config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.db, (err) => {
+		if (err) throw new Error(err.message);
+
+		console.log('Connected to the database: ' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.db);
+		mongoose.Promise = require('bluebird');
+	});
 });

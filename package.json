@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Quiznology/api.quiznology.com#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "connect-redis": "^3.3.0",
     "express": "^4.15.3",

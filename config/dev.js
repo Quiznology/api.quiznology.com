@@ -8,7 +8,7 @@ module.exports = {
 		log: 'dev'
 	},
 	mongo: {
-		host: process.env.MONGO_HOST || 'localhost',
+		host: process.env.MONGO_HOST || 'mongodb://localhost',
 		port: process.env.MONGO_PORT || 27017,
 		db  : process.env.MONGO_DB   || "quiznology"
 	},

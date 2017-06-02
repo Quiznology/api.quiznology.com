@@ -5,11 +5,16 @@ module.exports = {
 };
 
 function logUser(profile, done) {
-	User.findOrCreate({ githubID: profile.id })
-	.then((user) => {
-		done(null, user);
-	})
-	.catch((err) => {
-		done(err, null);
-	});
+	const newUser = {
+		github: {
+			id: profile.id,
+			url: profile._json.html_url
+		},
+		username: profile._json.login,
+		name: profile.displayName,
+		image: profile._json.avatar_url,
+		email: profile._json.email
+	};
+
+	User.findOrCreate(newUser, done);
 }
