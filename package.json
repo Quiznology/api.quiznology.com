@@ -1,21 +1,8 @@
 {
-  "name": "com.quiznology.api",
+  "name": "api.quiznology.com",
   "version": "0.0.1",
+  "license": "MIT",
   "description": "API for the QUIZnology project",
-  "main": "bin/api.js",
-  "scripts": {
-    "test": "gulp test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Quiznology/api.quiznology.com.git"
-  },
-  "keywords": [
-    "quiz",
-    "developers",
-    "code",
-    "self-improvement"
-  ],
   "contributors": [
     {
       "name": "José Vicente Sogorb",
@@ -41,11 +28,46 @@
       "name": "Miguel Haba"
     }
   ],
-  "license": "MIT",
+  "keywords": [
+    "quiz",
+    "developers",
+    "code",
+    "self-improvement"
+  ],
+  "main": "bin/api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quiznology/api.quiznology.com.git"
+  },
   "bugs": {
     "url": "https://github.com/Quiznology/api.quiznology.com/issues"
   },
   "homepage": "https://github.com/Quiznology/api.quiznology.com#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "connect-redis": "^3.3.0",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.10.4",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-github2": "^0.1.10",
+    "redis": "^2.7.1"
+  },
   "devDependencies": {
     "chai": "^4.0.1",
     "gulp": "^3.9.1",
