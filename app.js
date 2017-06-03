@@ -49,6 +49,7 @@ app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 if (config.morgan.user) {
 	app.use(config.morgan.log);
 }
@@ -65,13 +66,9 @@ app.get('/', (req, res) => {
 	res.status(200).send(req.user);
 });
 
-app.get('/auth/github', passport.authenticate('github'), (req, res) => {
-	res.status(200).json(req.user);
-});
-
-app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
-	console.log(req.user);
-	res.status(200).json(req.user);
+app.get('/auth/github', passport.authenticate('github'));
+app.get('/auth/github/callback', passport.authenticate('github'), (req, res) => {
+	res.redirect('/');
 });
 
 app.listen(config.port, (err) => {
@@ -82,6 +79,5 @@ app.listen(config.port, (err) => {
 		if (err) throw new Error(err.message);
 
 		console.log('Connected to the database: ' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.db);
-		mongoose.Promise = require('bluebird');
 	});
 });

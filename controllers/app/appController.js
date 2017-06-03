@@ -5,8 +5,6 @@ module.exports = {
 };
 
 function logUser(profile, done) {
-	console.log(profile);
-
 	const newUser = {
 		github: {
 			id: profile.id,
