@@ -1,0 +1,17 @@
+{
+  "github": {
+    "id": "a123",
+    "url": "http://github.com/john_doe"
+  },
+  "username": "john_doe",
+  "name": "John Doe",
+  "image": "http://images.sample.com/john_doe",
+  "email": "john.doe@mail.com",
+  "updatedAt": "01-01-2020T01:00:00+01:00",
+  "friends": [],
+  "tests": [
+    {"date": "01-01-2020T01:00:00+01:00", "score": 0.5}
+  ],
+  "actualScore": 0.5,
+  "questions": []
+}
