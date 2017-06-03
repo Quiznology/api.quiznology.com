@@ -39,10 +39,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "gulp test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "gulp test",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -71,6 +68,9 @@
   "devDependencies": {
     "chai": "^4.0.1",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^4.3.1"
+    "gulp-mocha": "^4.3.1",
+    "sinon": "^2.3.2",
+    "sinon-stub-promise": "^4.0.0",
+    "sinon-test": "^1.0.2"
   }
 }
