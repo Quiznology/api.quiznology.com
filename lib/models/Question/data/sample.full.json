@@ -1,0 +1,17 @@
+{
+  "status": "pending",
+  "body": "Lorem Ipsum",
+  "answers": [
+    { "id": 1, "body": "Answer 1" },
+    { "id": 2, "body": "Answer 2" },
+    { "id": 3, "body": "Answer 3" },
+    { "id": 4, "body": "Answer 4" }
+  ],
+  "correct": 1,
+  "createdAt": "01-01-2020T01:00:00+01:00",
+  "updatedAt": "01-01-2020T01:00:00+01:00",
+  "answered": 10,
+  "failed": 3,
+  "scope": 1,
+  "position": 10
+}
