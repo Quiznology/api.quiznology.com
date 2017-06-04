@@ -69,6 +69,7 @@
     "chai": "^4.0.1",
     "gulp": "^3.9.1",
     "gulp-mocha": "^4.3.1",
+    "gulp-watch": "^4.3.11",
     "sinon": "^2.3.2",
     "sinon-stub-promise": "^4.0.0",
     "sinon-test": "^1.0.2"
