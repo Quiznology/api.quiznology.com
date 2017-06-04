@@ -38,7 +38,8 @@ passport.deserializeUser((function(obj, done) {
 passport.use(new GithubStrategy({
 	clientID: config.github.clientID,
 	clientSecret: config.github.clientSecret,
-	callbackURL: config.github.callbackURL
+	callbackURL: config.github.callbackURL,
+	scope: "user:email"
 }, (accessToken, refreshToken, profile, done) => {
 	appController.logUser(profile, done);
 }));
@@ -80,4 +81,5 @@ app.listen(config.port, (err) => {
 
 		console.log('Connected to the database: ' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.db);
 	});
+	mongoose.Promise = require('bluebird');
 });
