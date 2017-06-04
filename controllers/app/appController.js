@@ -5,14 +5,12 @@ module.exports = {
 };
 
 function logUser(profile, done) {
-	console.log(profile);
-
 	const newUser = {
 		github: {
 			id: profile.id,
-			url: profile._json.html_url
+			url: profile.profileUrl
 		},
-		username: profile._json.login,
+		username: profile.username,
 		name: profile.displayName,
 		image: profile._json.avatar_url,
 		email: profile._json.email

@@ -1,0 +1,10 @@
+{
+  "body": "Lorem Ipsum",
+  "answers": [
+    { "id": 1, "body": "Answer 1" },
+    { "id": 2, "body": "Answer 2" },
+    { "id": 3, "body": "Answer 3" },
+    { "id": 4, "body": "Answer 4" }
+  ],
+  "correct": 1
+}
