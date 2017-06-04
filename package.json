@@ -41,7 +41,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "istanbul cover -x **/*.test.js _mocha -- -R spec lib/** --recursive",
+    "test": "istanbul cover -x '**/*.test.js' -x 'config/*.js' --include-all-sources true _mocha -- -R spec lib/** --recursive",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
