@@ -80,6 +80,6 @@ app.listen(config.port, (err) => {
 		if (err) throw new Error(err.message);
 
 		console.log('Connected to the database: ' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.db);
+		mongoose.Promise = require('bluebird');
 	});
-	mongoose.Promise = require('bluebird');
 });
