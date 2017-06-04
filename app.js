@@ -38,7 +38,8 @@ passport.deserializeUser((function(obj, done) {
 passport.use(new GithubStrategy({
 	clientID: config.github.clientID,
 	clientSecret: config.github.clientSecret,
-	callbackURL: config.github.callbackURL
+	callbackURL: config.github.callbackURL,
+	scope: "user:email"
 }, (accessToken, refreshToken, profile, done) => {
 	appController.logUser(profile, done);
 }));
@@ -65,13 +66,9 @@ app.get('/', (req, res) => {
 	res.status(200).send(req.user);
 });
 
-app.get('/auth/github', passport.authenticate('github'), (req, res) => {
-	res.status(200).json(req.user);
-});
-
-app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
-	console.log(req.user);
-	res.status(200).json(req.user);
+app.get('/auth/github', passport.authenticate('github'));
+app.get('/auth/github/callback', passport.authenticate('github'), (req, res) => {
+	res.redirect('/');
 });
 
 app.listen(config.port, (err) => {
