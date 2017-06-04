@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/Quiznology/api.quiznology.com/badge.svg?branch=master)](https://coveralls.io/r/Quiznology/api.quiznology.com?branch=master)
+
 # QUIZnology API
 
 This project implements the API for QUIZnology.com project. This an open source project so feel free to colaborate.
