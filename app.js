@@ -50,7 +50,6 @@ app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 if (config.morgan.user) {
 	app.use(config.morgan.log);
 }
