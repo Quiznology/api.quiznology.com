@@ -12,6 +12,7 @@ const passport = require('passport');
 const GithubStrategy = require('passport-github2').Strategy;
 const config = require('./config');
 const appController = require('./controllers/app/appController');
+const routes = require('./lib/routes');
 
 app.use(session({
 	secret: config.sessionSecret || 'Frase muy secreta',
@@ -62,14 +63,7 @@ const allowCrossDomain = (req, res, next) => {
 };
 app.use(allowCrossDomain);
 
-app.get('/', (req, res) => {
-	res.status(200).send(req.user);
-});
-
-app.get('/auth/github', passport.authenticate('github'));
-app.get('/auth/github/callback', passport.authenticate('github'), (req, res) => {
-	res.redirect('/');
-});
+routes(app);
 
 app.listen(config.port, (err) => {
 	if (err) throw new Error(err.message);
