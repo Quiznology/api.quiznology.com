@@ -1,4 +1,4 @@
-const ghApi = require('./github_api');
+const github = require('./github_api');
 
 module.exports = {
 	id: "dev",
@@ -17,9 +17,7 @@ module.exports = {
 		host: process.env.REDIS_HOST || 'localhost',
 		port: process.env.REDIS_PORT || 6379
 	},
-	github: {
-		clientID: process.env.GITHUB_CLIENT_ID || ghApi.clientID,
-		clientSecret: process.env.GITHUB_SECRET_ID || ghApi.clientSecret,
-		callbackURL: `http://localhost:3001/auth/github/callback`
+	auth: {
+		github
 	}
 };

@@ -1,18 +1,19 @@
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const redis = require('redis');
-const redisStore = require('connect-redis')(session);
-const redisClient = redis.createClient();
-const passport = require('passport');
-const GithubStrategy = require('passport-github2').Strategy;
-const config = require('./config');
-const appController = require('./controllers/app/appController');
-const routes = require('./lib/routes');
+const express        = require('express'),
+			app            = express(),
+			morgan         = require('morgan'),
+			bodyParser     = require('body-parser'),
+			methodOverride = require('method-override'),
+			mongoose       = require('mongoose'),
+			session        = require('express-session'),
+			cors           = require('cors'),
+			redis          = require('redis'),
+			redisStore     = require('connect-redis')(session),
+			redisClient    = redis.createClient(),
+			passport       = require('passport'),
+			GithubStrategy = require('passport-github2').Strategy,
+			config         = require('./config'),
+			appController  = require('./controllers/app/appController'),
+			routes         = require('./lib/routes');
 
 app.use(session({
 	secret: config.sessionSecret || 'Frase muy secreta',
@@ -30,20 +31,20 @@ app.use(session({
 	 }
 }));
 
-passport.serializeUser(function(user, done) {
-	done(null, user);
-});
-passport.deserializeUser((function(obj, done) {
-	done(null, obj);
-}));
-passport.use(new GithubStrategy({
-	clientID: config.github.clientID,
-	clientSecret: config.github.clientSecret,
-	callbackURL: config.github.callbackURL,
-	scope: "user:email"
-}, (accessToken, refreshToken, profile, done) => {
-	appController.logUser(profile, done);
-}));
+// passport.serializeUser(function(user, done) {
+// 	done(null, user);
+// });
+// passport.deserializeUser((function(obj, done) {
+// 	done(null, obj);
+// }));
+// passport.use(new GithubStrategy({
+// 	clientID: config.github.clientID,
+// 	clientSecret: config.github.clientSecret,
+// 	callbackURL: config.github.callbackURL,
+// 	scope: "user:email"
+// }, (accessToken, refreshToken, profile, done) => {
+// 	appController.logUser(profile, done);
+// }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -55,15 +56,13 @@ if (config.morgan.user) {
 	app.use(config.morgan.log);
 }
 
-const allowCrossDomain = (req, res, next) => {
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Accept, Content-Type, X-Access-Token, Cache-Control, Pragma');
-	next();
-};
-app.use(allowCrossDomain);
-
+app.use(cors());
 routes(app);
+
+app.all('/*', function (req, res) {
+  res.send(404);
+});
+
 
 app.listen(config.port, (err) => {
 	if (err) throw new Error(err.message);
